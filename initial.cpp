@@ -5,7 +5,7 @@
 #include <fstream>
 const double MINIMAL_NONZERO = 1e-3;
 const unsigned int MAX_ELEMENTS_COUNT = 300;
-class GeometryItem
+class MPGeometryItem
 {
 public:
     virtual void Scale(double) = 0;
@@ -16,7 +16,7 @@ enum shape
     cros, box
 };
 
-class Point : public GeometryItem {
+class MPPoint : public MPGeometryItem {
     double x, y;
     shape Pointshape; //cross, box size d
 public:
@@ -24,37 +24,37 @@ public:
     virtual void Display() const {};
     void Write(std::ostream& file ) const override;
     virtual void Read(const char* path) {};
-    friend Point operator * (const Point& left, const double right) {};
-    friend Point operator + (const Point& left, const Point& right) {};
+    friend MPPoint operator * (const MPPoint& left, const double right) {};
+    friend MPPoint operator + (const MPPoint& left, const MPPoint& right) {};
 };
 
-void Point::Write(std::ostream& file) const {
+void MPPoint::Write(std::ostream& file) const {
     file << "POINT" << x << "" << y << "" << Pointshape << std::endl;
 }
 
 
-class Curve : public GeometryItem
+class MPCurve : public MPGeometryItem
  {
 public:
     virtual void Display() const = 0;
     virtual void Read(const char* path) = 0;
     virtual double Tmin() const = 0;
     virtual double Tmax() const = 0;
-    virtual Point Point(double t) const = 0;
+    virtual MPPoint Point(double t) const = 0;
 };
 
-class Line : public Curve 
+class MPLine : public MPCurve 
 {
-    ::Point first, last;
+    MPPoint first, last;
 public:
     void Write(std::ostream& file) const override;
     void Scale(double s) override { if (s > MINIMAL_NONZERO) { first.Scale(s); last.Scale(s); } };
     virtual double Tmin() const { return 0.0; };
     virtual double Tmax() const { return 1.0; };
-    virtual ::Point Point(double t) const { return first * (1. - t) + last * t; };
+    virtual MPPoint Point(double t) const { return first * (1. - t) + last * t; };
 };
 
-void Line::Write(std::ostream& file) const {
+void MPLine::Write(std::ostream& file) const {
     file << "LINE" << std::endl;
     first.Write(file);
     last.Write(file);
@@ -63,14 +63,14 @@ void Line::Write(std::ostream& file) const {
 
 class GeometricScene 
 {
-    GeometryItem* shapes[MAX_ELEMENTS_COUNT];
+    MPGeometryItem* shapes[MAX_ELEMENTS_COUNT];
     unsigned int shapeIndex;
 public:
     void Scale(double);
     void Display() const;
     void Write(const char* path) const;
     void Read(const char* path);
-    void AddItem(GeometryItem* item) { if (item && (shapeIndex < MAX_ELEMENTS_COUNT)) shapes[shapeIndex++] = item; }
+    void AddItem(MPGeometryItem* item) { if (item && (shapeIndex < MAX_ELEMENTS_COUNT)) shapes[shapeIndex++] = item; }
 };
 
 void GeometricScene::Scale(double s) {
