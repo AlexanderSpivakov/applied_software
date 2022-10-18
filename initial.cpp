@@ -88,4 +88,4 @@ void GeometricScene::Write(const char* path) const {
 
 int main()
 {
-
+}
