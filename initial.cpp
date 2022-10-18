@@ -88,4 +88,6 @@ void GeometricScene::Write(const char* path) const {
 
 int main()
 {
+    printf("Hello Word");
+    return(0);
 }
