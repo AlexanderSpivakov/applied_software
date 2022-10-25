@@ -5,6 +5,12 @@
 #include <fstream>
 const double MINIMAL_NONZERO = 1e-3;
 const unsigned int MAX_ELEMENTS_COUNT = 300;
+
+//самый базовый класс
+// Название класса
+// Назначение класса
+// --
+
 class MPGeometryItem
 {
 public:
