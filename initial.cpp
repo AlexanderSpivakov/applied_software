@@ -86,6 +86,8 @@ void GeometricScene::Write(const char* path) const {
         shapes[I]->Write(file);
 }
 
-int main()
+int main(int argc, char** argv)
 {
+    printf("Hello Word");
+    return(0);
 }
