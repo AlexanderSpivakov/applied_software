@@ -19,7 +19,10 @@ enum shape
 {
     cros, box
 };
-
+//--------
+// Двумерная точка
+// Проще не бывает 
+// ---
 class MPPoint : public MPGeometryItem {
     double x, y;
     shape Pointshape; //cross, box size d
