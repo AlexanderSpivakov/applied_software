@@ -5,6 +5,7 @@
 void MPPoint::Write(std::ostream& file) const {
 	file << "POINT" << x << "" << y << "" << Pointshape << std::endl;
 }
+
 void MPLine::Write(std::ostream& file) const {
 	file << "LINE" << std::endl;
 	first.Write(file);

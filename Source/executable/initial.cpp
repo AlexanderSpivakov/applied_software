@@ -3,9 +3,7 @@
 
 #include <iostream>
 #include <fstream>
-const double MINIMAL_NONZERO = 1e-3;
-const unsigned int MAX_ELEMENTS_COUNT = 300;
-
+#include <fucos.h>
 //самый базовый класс
 // --
 
@@ -93,7 +91,8 @@ void GeometricScene::Write(const char* path) const {
 int main(int argc, char** argv)
 {
   
-
+	MPPoint Point;
+	Point.Write(std::cout);
 	printf("Hello Word");
 	fgetchar();
     return(0);
