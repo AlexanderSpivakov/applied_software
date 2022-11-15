@@ -3,13 +3,11 @@
 
 #include <iostream>
 #include <fstream>
-const double MINIMAL_NONZERO = 1e-3;
-const unsigned int MAX_ELEMENTS_COUNT = 300;
-
+#include <fucos.h>
 //самый базовый класс
 // --
 
-class MPGeometryItem
+/*class MPGeometryItem
 {
 public:
     virtual void Scale(double) = 0;
@@ -88,10 +86,14 @@ void GeometricScene::Write(const char* path) const {
     std::ofstream file(path, std::ios::out);
     for (unsigned int I = 0; I < shapeIndex; I++)
         shapes[I]->Write(file);
-}
+}*/
 
 int main(int argc, char** argv)
 {
-    printf("Hello Word");
+  
+	MPPoint Point;
+	Point.Write(std::cout);
+	printf("Hello Word");
+	fgetchar();
     return(0);
 }
