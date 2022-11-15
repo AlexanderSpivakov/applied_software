@@ -1,3 +1,5 @@
-PROJECT ( 2dapp )
+PROJECT ( 2dproject )
 
-add_executable( 2dapp initial.cpp )
+add_subdirectory (executable)
+
+add_subdirectory (library)
