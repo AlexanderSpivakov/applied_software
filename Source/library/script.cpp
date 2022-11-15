@@ -23,3 +23,10 @@ void GeometricScene::Write(const char* path) const {
 	for (unsigned int I = 0; I < shapeIndex; I++)
 		shapes[I]->Write(file);
 }		
+ MPPoint::MPPoint()
+:x(0)
+, y(0)
+, Pointshape(cros)
+{
+
+}

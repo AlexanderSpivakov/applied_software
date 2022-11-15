@@ -26,6 +26,7 @@ public:
 	virtual void Read(const char* path) {};
 	friend MPPoint operator * (const MPPoint& left, const double right) {};
 	friend MPPoint operator + (const MPPoint& left, const MPPoint& right) {};
+	MPPoint();
 };
 
 class MPCurve : public MPGeometryItem
