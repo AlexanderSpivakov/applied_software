@@ -88,12 +88,55 @@ void GeometricScene::Write(const char* path) const {
         shapes[I]->Write(file);
 }*/
 
+
+void InitPointsScale(MPPoint& p1, MPPoint& p2, MPPoint&p3)
+{
+	p1 = MPPoint(1., 2.);
+	p2 = MPPoint(-1., 2.);
+	p3 = MPPoint(.8, -2.5);
+}
+
+
+void PrintScaleState( const MPPoint& p1, const MPPoint& p2, const MPPoint&p3, const char* comment)
+{
+	std::cout << std::endl << comment << std::endl;
+	p1.Write(std::cout);
+	std::cout << std::endl;
+	p2.Write(std::cout);
+	std::cout << std::endl;
+	p3.Write(std::cout);
+}
+
+
+void TestScale()
+{
+	MPPoint p1;
+	MPPoint p2;
+	MPPoint p3;
+	
+	const int count = 6;
+	double scales[] = { 1., 2.5, .4, -2.2, -.8, 0.0 };
+	for (int i = 0; i < count; i++)
+	{
+		InitPointsScale(p1, p2, p3);		
+		PrintScaleState(p1, p2, p3, "Scale initial state");
+		std::cout << "Current scale is " << scales[i] << std::endl;
+		p1.Scale(scales[i]);
+		p2.Scale(scales[i]);
+		p3.Scale(scales[i]);
+		PrintScaleState(p1, p2, p3, "Points after scale");
+	}
+}
+
 int main(int argc, char** argv)
 {
   
 	MPPoint Point;
 	Point.Write(std::cout);
 	printf("Hello Word");
+
+	TestScale();
+
 	fgetchar();
     return(0);
 }
