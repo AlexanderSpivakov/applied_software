@@ -30,3 +30,12 @@ void GeometricScene::Write(const char* path) const {
 {
 
 }
+
+
+ MPPoint::MPPoint(double const ix, double const iy, shape const shape)
+	 :x( ix )
+	 , y(iy)
+	 , Pointshape( shape )
+ {
+
+ }
