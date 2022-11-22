@@ -137,6 +137,6 @@ int main(int argc, char** argv)
 
 	TestScale();
 
-	fgetchar();
+	getchar();
     return(0);
 }

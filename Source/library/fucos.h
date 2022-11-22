@@ -3,7 +3,13 @@
 const double MINIMAL_NONZERO = 1e-3;
 const unsigned int MAX_ELEMENTS_COUNT = 300;
 
-class __declspec(dllexport)  MPGeometryItem
+#ifdef WIN32
+  #define EXPORTCALSS __declspec(dllexport)
+#else
+  #define EXPORTCALSS
+#endif
+
+class EXPORTCALSS  MPGeometryItem
 {
 public:
 	virtual void Scale(double) = 0;
@@ -16,7 +22,7 @@ enum shape
 };
 
 
-class __declspec(dllexport) MPPoint : public MPGeometryItem {
+class EXPORTCALSS MPPoint : public MPGeometryItem {
 	double x, y;
 	shape Pointshape; //cross, box size d
 public:
