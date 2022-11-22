@@ -27,6 +27,7 @@ public:
 	friend MPPoint operator * (const MPPoint& left, const double right) {};
 	friend MPPoint operator + (const MPPoint& left, const MPPoint& right) {};
 	MPPoint();
+	MPPoint( double const ix, double const iy, shape const shape = cros );
 };
 
 class MPCurve : public MPGeometryItem
