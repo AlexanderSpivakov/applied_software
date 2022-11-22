@@ -92,7 +92,7 @@ void GeometricScene::Write(const char* path) const {
 void InitPointsScale(MPPoint& p1, MPPoint& p2, MPPoint&p3)
 {
 	p1 = MPPoint(1., 2.);
-	p2 = MPPoint(-1., 2.);
+	p2 = MPPoint(-1., 2., box);
 	p3 = MPPoint(.8, -2.5);
 }
 
