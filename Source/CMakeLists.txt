@@ -1,6 +1,6 @@
 PROJECT ( 2dproject )
 
-set( common_out_path "/home/student/Документы/projects/build/bin" )
+set( common_out_path "../bin" )
 
 add_subdirectory (executable)
 
